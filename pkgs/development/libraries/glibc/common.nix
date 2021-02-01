@@ -41,9 +41,9 @@
 } @ args:
 
 let
-  version = "2.32";
-  patchSuffix = "-35";
-  sha256 = "0di848ibffrnwq7g2dvgqrnn4xqhj3h96csn69q4da51ymafl9qn";
+  version = "2.33";
+  patchSuffix = "-0";
+  sha256 = "sha256-LiVWAA4QXb1X8Layoy/yzxc73k8Nhd/8z9i35RoGd/8=";
 in
 
 assert withLinuxHeaders -> linuxHeaders != null;
@@ -59,15 +59,6 @@ stdenv.mkDerivation ({
 
   patches =
     [
-      /* No tarballs for stable upstream branch, only https://sourceware.org/git/glibc.git
-         and using git or something would complicate bootstrapping.
-         Fortunately it's not too big.
-          $ git checkout origin/release/2.32/master; git describe
-          glibc-2.32-35-g082798622d
-          $ git show --reverse glibc-2.32.. | gzip -n -9 --rsyncable - > 2.32-35.patch.gz
-       */
-      ./2.32-35.patch.gz
-
       /* Allow NixOS and Nix to handle the locale-archive. */
       ./nix-locale-archive.patch
 
