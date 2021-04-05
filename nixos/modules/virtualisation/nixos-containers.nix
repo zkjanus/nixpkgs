@@ -739,7 +739,7 @@ in
 
       unitConfig.RequiresMountsFor = "/var/lib/containers/%i";
 
-      path = [ pkgs.iproute2 ];
+      path = [ pkgs.iproute ];
 
       environment = {
         root = "/var/lib/containers/%i";

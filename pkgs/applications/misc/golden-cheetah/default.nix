@@ -1,7 +1,7 @@
 { lib, fetchFromGitHub, fetchpatch, mkDerivation
 , qtbase, qtsvg, qtserialport, qtwebengine, qtmultimedia, qttools
 , qtconnectivity, qtcharts, libusb-compat-0_1
-, bison, flex, zlib, qmake, makeDesktopItem, makeWrapper
+, yacc, flex, zlib, qmake, makeDesktopItem, makeWrapper
 }:
 
 let
@@ -29,7 +29,7 @@ in mkDerivation rec {
     qtbase qtsvg qtserialport qtwebengine qtmultimedia qttools zlib
     qtconnectivity qtcharts libusb-compat-0_1
   ];
-  nativeBuildInputs = [ flex makeWrapper qmake bison ];
+  nativeBuildInputs = [ flex makeWrapper qmake yacc ];
 
   patches = [
     # allow building with bison 3.7

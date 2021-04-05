@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, readline, bison }:
+{ lib, stdenv, fetchurl, readline, yacc }:
 
 let
   version = "0.9.1";
@@ -20,7 +20,7 @@ stdenv.mkDerivation {
     sourceRoot=.
   '';
 
-  buildInputs = [ readline bison ];
+  buildInputs = [ readline yacc ];
 
   configureFlags = [ "--with-readline" ];
 

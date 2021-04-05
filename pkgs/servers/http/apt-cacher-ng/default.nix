@@ -5,7 +5,7 @@
 , fetchurl
 , fuse
 , libevent
-, xz
+, lzma
 , openssl
 , pkg-config
 , systemd
@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake doxygen pkg-config ];
-  buildInputs = [ bzip2 fuse libevent xz openssl systemd tcp_wrappers zlib ];
+  buildInputs = [ bzip2 fuse libevent lzma openssl systemd tcp_wrappers zlib ];
 
   meta = with lib; {
     description = "A caching proxy specialized for linux distribution files";

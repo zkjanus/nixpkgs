@@ -13,7 +13,7 @@
 , glibc
 , gtk2
 , gtk3
-, libkrb5
+, kerberos
 , libX11
 , libXScrnSaver
 , libxcb
@@ -106,7 +106,7 @@ stdenv.mkDerivation {
       glibc
       gtk2
       gtk3
-      libkrb5
+      kerberos
       mesa
       libX11
       libXScrnSaver

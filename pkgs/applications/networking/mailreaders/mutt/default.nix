@@ -4,7 +4,7 @@
 , cyrus_sasl ? null
 , gnupg ? null
 , gpgme ? null
-, libkrb5 ? null
+, kerberos ? null
 , headerCache  ? true
 , sslSupport   ? true
 , saslSupport  ? true
@@ -43,7 +43,7 @@ stdenv.mkDerivation rec {
     [ ncurses which perl ]
     ++ optional headerCache  gdbm
     ++ optional sslSupport   openssl
-    ++ optional gssSupport   libkrb5
+    ++ optional gssSupport   kerberos
     ++ optional saslSupport  cyrus_sasl
     ++ optional gpgmeSupport gpgme;
 

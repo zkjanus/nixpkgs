@@ -20,7 +20,7 @@
 , gpgme
 , gtk2
 , gtk3
-, libkrb5
+, kerberos
 , libcanberra
 , libGL
 , libGLU
@@ -93,7 +93,7 @@ stdenv.mkDerivation {
       glibc
       gtk2
       gtk3
-      libkrb5
+      kerberos
       libX11
       libXScrnSaver
       libXcomposite

@@ -1,7 +1,7 @@
 {
   mkDerivation, lib,
   extra-cmake-modules,
-  bzip2, xz, qtbase, zlib,
+  bzip2, lzma, qtbase, zlib,
 }:
 
 mkDerivation {
@@ -11,7 +11,7 @@ mkDerivation {
     broken = builtins.compareVersions qtbase.version "5.14.0" < 0;
   };
   nativeBuildInputs = [ extra-cmake-modules ];
-  buildInputs = [ bzip2 xz zlib ];
+  buildInputs = [ bzip2 lzma zlib ];
   propagatedBuildInputs = [ qtbase ];
   outputs = [ "out" "dev" ];
 }

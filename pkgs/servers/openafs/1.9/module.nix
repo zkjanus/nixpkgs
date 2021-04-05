@@ -1,5 +1,5 @@
-{ lib, stdenv, fetchurl, which, autoconf, automake, flex, bison
-, kernel, glibc, perl, libtool_2, libkrb5, fetchpatch }:
+{ lib, stdenv, fetchurl, which, autoconf, automake, flex, yacc
+, kernel, glibc, perl, libtool_2, kerberos, fetchpatch }:
 
 with (import ./srcs.nix {
   inherit fetchurl;
@@ -13,10 +13,10 @@ in stdenv.mkDerivation {
   name = "openafs-${version}-${kernel.modDirVersion}";
   inherit version src;
 
-  nativeBuildInputs = [ autoconf automake flex libtool_2 perl which bison ]
+  nativeBuildInputs = [ autoconf automake flex libtool_2 perl which yacc ]
     ++ kernel.moduleBuildDependencies;
 
-  buildInputs = [ libkrb5 ];
+  buildInputs = [ kerberos ];
 
   patches = [];
 
@@ -60,4 +60,5 @@ in stdenv.mkDerivation {
     maintainers = [ maintainers.maggesi maintainers.spacefrogg ];
     broken = versionOlder kernel.version "3.18" || kernel.isHardened;
   };
+
 }

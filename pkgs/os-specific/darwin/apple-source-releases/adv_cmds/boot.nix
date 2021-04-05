@@ -1,4 +1,4 @@
-{ lib, appleDerivation, fetchzip, bsdmake, perl, flex, bison
+{ lib, appleDerivation, fetchzip, bsdmake, perl, flex, yacc
 }:
 
 # this derivation sucks
@@ -16,7 +16,7 @@ let recentAdvCmds = fetchzip {
 };
 
 in appleDerivation {
-  nativeBuildInputs = [ bsdmake perl bison flex ];
+  nativeBuildInputs = [ bsdmake perl yacc flex ];
   buildInputs = [ flex ];
 
   patchPhase = ''

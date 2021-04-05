@@ -1,5 +1,5 @@
 { lib, fetchFromGitHub, buildGoPackage, which, go-bindata, rsync, util-linux
-, coreutils, libkrb5, ncurses, clang, installShellFiles
+, coreutils, kerberos, ncurses, clang, installShellFiles
 , components ? [
   "cmd/oc"
   "cmd/openshift"
@@ -33,7 +33,7 @@ in buildGoPackage rec {
 
   goPackagePath = "github.com/openshift/origin";
 
-  buildInputs = [ libkrb5 ncurses ];
+  buildInputs = [ kerberos ncurses ];
 
   nativeBuildInputs = [ which rsync go-bindata clang installShellFiles ];
 

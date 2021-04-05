@@ -3659,7 +3659,9 @@ in {
 
   keras-preprocessing = callPackage ../development/python-modules/keras-preprocessing { };
 
-  kerberos = callPackage ../development/python-modules/kerberos { };
+  kerberos = callPackage ../development/python-modules/kerberos {
+    inherit (pkgs) kerberos;
+  };
 
   keyring = if isPy3k then
     callPackage ../development/python-modules/keyring { }

@@ -12,7 +12,7 @@
 , dxflib
 , curl
 , libiodbc
-, xz
+, lzma
 , libharu
 , opencv
 , vigra
@@ -64,7 +64,7 @@ mkDerivation rec {
     vigra
     postgresql
     libiodbc
-    xz
+    lzma
     qhull
     giflib
   ]

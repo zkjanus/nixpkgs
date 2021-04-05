@@ -119,7 +119,7 @@ in
       wants = [ "network-online.target" ];
       after = [ "network-online.target" ];
 
-      path = [ pkgs.wget pkgs.iproute2 ];
+      path = [ pkgs.wget pkgs.iproute ];
 
       script =
         ''

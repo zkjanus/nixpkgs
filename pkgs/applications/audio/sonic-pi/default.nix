@@ -9,7 +9,7 @@
 , pkg-config
 , boost
 , bash
-, jack2
+, jack2Full
 , supercollider
 , qwt
 , osmid
@@ -102,7 +102,7 @@ mkDerivation rec {
   dontWrapQtApps = true;
   preFixup = ''
     wrapQtApp "$out/bin/sonic-pi" \
-      --prefix PATH : ${ruby}/bin:${bash}/bin:${supercollider}/bin:${jack2}/bin \
+      --prefix PATH : ${ruby}/bin:${bash}/bin:${supercollider}/bin:${jack2Full}/bin \
       --set AUBIO_LIB "${aubio}/lib/libaubio.so"
   '';
 

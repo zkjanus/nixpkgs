@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, fetchpatch, pam, bison, flex }:
+{ lib, stdenv, fetchurl, fetchpatch, pam, yacc, flex }:
 
 stdenv.mkDerivation rec {
   pname = "libcgroup";
@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
     sha256 = "0lgvyq37gq84sk30sg18admxaj0j0p5dq3bl6g74a1ppgvf8pqz4";
   };
 
-  buildInputs = [ pam bison flex ];
+  buildInputs = [ pam yacc flex ];
 
   patches = [
     (fetchpatch {

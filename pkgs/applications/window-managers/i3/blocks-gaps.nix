@@ -1,5 +1,5 @@
 { fetchFromGitHub, lib, stdenv, perl, makeWrapper
-, iproute2, acpi, sysstat, alsaUtils
+, iproute, acpi, sysstat, alsaUtils
 , scripts ? [ "bandwidth" "battery" "cpu_usage" "disk" "iface"
               "load_average" "memory" "volume" "wifi" ]
 }:
@@ -30,13 +30,13 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     wrapProgram $out/libexec/i3blocks/bandwidth \
-      --prefix PATH : ${makeBinPath (optional (elem "bandwidth" scripts) iproute2)}
+      --prefix PATH : ${makeBinPath (optional (elem "bandwidth" scripts) iproute)}
     wrapProgram $out/libexec/i3blocks/battery \
       --prefix PATH : ${makeBinPath (optional (elem "battery" scripts) acpi)}
     wrapProgram $out/libexec/i3blocks/cpu_usage \
       --prefix PATH : ${makeBinPath (optional (elem "cpu_usage" scripts) sysstat)}
     wrapProgram $out/libexec/i3blocks/iface \
-      --prefix PATH : ${makeBinPath (optional (elem "iface" scripts) iproute2)}
+      --prefix PATH : ${makeBinPath (optional (elem "iface" scripts) iproute)}
     wrapProgram $out/libexec/i3blocks/volume \
       --prefix PATH : ${makeBinPath (optional (elem "volume" scripts) alsaUtils)}
   '';

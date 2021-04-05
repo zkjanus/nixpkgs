@@ -2,7 +2,7 @@
 , glib, libGLU, libGL, libpulseaudio, zlib, dbus, fontconfig, freetype
 , gtk3, pango
 , makeWrapper , python2Packages, lib
-, lsof, curl, libuuid, cups, mesa, xz, libxkbcommon
+, lsof, curl, libuuid, cups, mesa, lzma, libxkbcommon
 }:
 
 let
@@ -38,7 +38,7 @@ let
     curl
     libuuid
     cups
-    xz
+    lzma
     libxkbcommon
   ]);
   package = stdenv.mkDerivation {

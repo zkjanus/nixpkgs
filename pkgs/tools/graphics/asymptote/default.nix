@@ -1,5 +1,5 @@
 { lib, stdenv, fetchFromGitHub, fetchurl, fetchpatch
-, autoreconfHook, bison, glm, flex
+, autoreconfHook, bison, glm, yacc, flex
 , freeglut, ghostscriptX, imagemagick, fftw
 , boehmgc, libGLU, libGL, mesa, ncurses, readline, gsl, libsigsegv
 , python3Packages
@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
     autoreconfHook
     bison
     flex
-    bison
+    yacc
     texinfo
   ];
 

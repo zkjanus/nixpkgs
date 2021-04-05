@@ -225,7 +225,7 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    environment.systemPackages = [ datadogPkg pkgs.sysstat pkgs.procps pkgs.iproute2 ];
+    environment.systemPackages = [ datadogPkg pkgs.sysstat pkgs.procps pkgs.iproute ];
 
     users.users.datadog = {
       description = "Datadog Agent User";
@@ -239,7 +239,7 @@ in {
 
     systemd.services = let
       makeService = attrs: recursiveUpdate {
-        path = [ datadogPkg pkgs.python pkgs.sysstat pkgs.procps pkgs.iproute2 ];
+        path = [ datadogPkg pkgs.python pkgs.sysstat pkgs.procps pkgs.iproute ];
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           User = "datadog";

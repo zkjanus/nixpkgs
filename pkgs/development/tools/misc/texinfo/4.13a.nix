@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, texinfo, ncurses, xz }:
+{ stdenv, fetchurl, texinfo, ncurses, lzma }:
 
 stdenv.mkDerivation rec {
   pname = "texinfo";
@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = [ ncurses ];
-  nativeBuildInputs = [ xz ];
+  nativeBuildInputs = [ lzma ];
 
   # Disabled because we don't have zdiff in the stdenv bootstrap.
   #doCheck = true;

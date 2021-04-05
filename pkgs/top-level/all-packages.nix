@@ -5180,6 +5180,7 @@ in
   gt5 = callPackage ../tools/system/gt5 { };
 
   gtest = callPackage ../development/libraries/gtest { };
+  gmock = gtest; # TODO: move to aliases.nix
 
   gbenchmark = callPackage ../development/libraries/gbenchmark {};
 
@@ -6349,6 +6350,7 @@ in
   luxcorerender = callPackage ../tools/graphics/luxcorerender { };
 
   xz = callPackage ../tools/compression/xz { };
+  lzma = xz; # TODO: move to aliases.nix
 
   lz4 = callPackage ../tools/compression/lz4 { };
 
@@ -12262,6 +12264,7 @@ in
   });
 
   bison = callPackage ../development/tools/parsing/bison { };
+  yacc = bison; # TODO: move to aliases.nix
 
   # Ruby fails to build with current bison
   bison_3_5 = pkgs.bison.overrideAttrs (oldAttrs: rec {
@@ -13920,7 +13923,7 @@ in
   cypress = callPackage ../development/web/cypress { };
 
   cyrus_sasl = callPackage ../development/libraries/cyrus-sasl {
-    libkrb5 = if stdenv.isFreeBSD then libheimdal else libkrb5;
+    kerberos = if stdenv.isFreeBSD then libheimdal else kerberos;
   };
 
   # Make bdb5 the default as it is the last release under the custom
@@ -14958,6 +14961,7 @@ in
   };
   krb5Full = krb5;
   libkrb5 = krb5.override { type = "lib"; };
+  kerberos = libkrb5; # TODO: move to aliases.nix
 
   l-smash = callPackage ../development/libraries/l-smash {
     stdenv = gccStdenv;
@@ -18121,7 +18125,9 @@ in
 
   ### SERVERS
 
-  _389-ds-base = callPackage ../servers/ldap/389 { };
+  _389-ds-base = callPackage ../servers/ldap/389 {
+    kerberos = libkrb5;
+  };
 
   adguardhome = callPackage ../servers/adguardhome {};
 
@@ -18703,6 +18709,7 @@ in
     inherit (darwin) cctools;
     inherit (pkgs.darwin.apple_sdk.frameworks) CoreServices;
   };
+  mysql = mariadb; # TODO: move to aliases.nix
 
   mongodb = hiPrio mongodb-3_4;
 
@@ -19501,6 +19508,7 @@ in
   iotop = callPackage ../os-specific/linux/iotop { };
 
   iproute2 = callPackage ../os-specific/linux/iproute { };
+  iproute = iproute2; # Alias added 2020-11-15 (TODO: deprecate and move to pkgs/top-level/aliases.nix)
 
   iproute_mptcp = callPackage ../os-specific/linux/iproute/mptcp.nix { };
 
@@ -29505,8 +29513,8 @@ in
     inherit (darwin.apple_sdk.frameworks) AudioUnit CoreAudio Accelerate;
     inherit (darwin) libobjc;
   };
-
   libjack2 = jack2.override { prefix = "lib"; };
+  jack2Full = jack2; # TODO: move to aliases.nix
 
   j2cli = with python3Packages; toPythonApplication j2cli;
 
@@ -29840,11 +29848,7 @@ in
   mnemonicode = callPackage ../misc/mnemonicode { };
 
   mysql-workbench = callPackage ../applications/misc/mysql-workbench (let mysql = mysql57; in {
-    gdal = gdal.override {
-      libmysqlclient = mysql // {
-        lib = { dev = mysql; }
-      ;}
-    ;};
+    gdal = gdal.override {libmysqlclient = mysql // {lib = {dev = mysql;};};};
     mysql = mysql;
     pcre = pcre-cpp;
     jre = jre8; # TODO: remove override https://github.com/NixOS/nixpkgs/pull/89731

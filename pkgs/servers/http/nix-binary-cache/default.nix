@@ -1,6 +1,6 @@
 {lib, stdenv
 , coreutils, findutils, nix, xz, bzip2, gnused, gnugrep, openssl
-, lighttpd, iproute2 }:
+, lighttpd, iproute }:
 stdenv.mkDerivation rec {
   version = "2014-06-29-1";
   pname = "nix-binary-cache";
@@ -21,7 +21,7 @@ stdenv.mkDerivation rec {
       --replace @gnugrep@ "${gnugrep}/bin" \
       --replace @openssl@ "${openssl.bin}/bin" \
       --replace @lighttpd@ "${lighttpd}/sbin" \
-      --replace @iproute@ "${iproute2}/sbin" \
+      --replace @iproute@ "${iproute}/sbin" \
       --replace "xXxXx" "xXxXx"
 
     chmod a+x "$out/bin/nix-binary-cache.cgi"
@@ -38,7 +38,7 @@ stdenv.mkDerivation rec {
       --replace @gnugrep@ "${gnugrep}/bin" \
       --replace @openssl@ "${openssl.bin}/bin" \
       --replace @lighttpd@ "${lighttpd}/sbin" \
-      --replace @iproute@ "${iproute2}/sbin" \
+      --replace @iproute@ "${iproute}/sbin" \
       --replace "xXxXx" "xXxXx"
 
     chmod a+x "$out/bin/nix-binary-cache-start"

@@ -13,7 +13,7 @@
 , xmlto
 , appstream-glib
 , substituteAll
-, bison
+, yacc
 , xdg-dbus-proxy
 , p11-kit
 , bubblewrap
@@ -35,7 +35,7 @@
 , fuse
 , nixosTests
 , libsoup
-, xz
+, lzma
 , zstd
 , ostree
 , polkit
@@ -114,7 +114,7 @@ stdenv.mkDerivation rec {
     pkg-config
     xmlto
     appstream-glib
-    bison
+    yacc
     wrapGAppsNoGuiHook
   ];
 
@@ -129,7 +129,7 @@ stdenv.mkDerivation rec {
     libcap
     libseccomp
     libsoup
-    xz
+    lzma
     zstd
     polkit
     python3

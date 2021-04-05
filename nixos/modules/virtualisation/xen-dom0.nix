@@ -248,7 +248,7 @@ in
     # Xen provides udev rules.
     services.udev.packages = [ cfg.package ];
 
-    services.udev.path = [ pkgs.bridge-utils pkgs.iproute2 ];
+    services.udev.path = [ pkgs.bridge-utils pkgs.iproute ];
 
     systemd.services.xen-store = {
       description = "Xen Store Daemon";

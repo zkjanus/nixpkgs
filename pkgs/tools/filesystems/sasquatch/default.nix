@@ -2,6 +2,7 @@
 , fetchurl
 , lz4 ? null
 , lz4Support ? false
+, lzma
 , lzo
 , lib, stdenv
 , xz
@@ -27,7 +28,7 @@ stdenv.mkDerivation rec {
     sha256 = "1xpklm0y43nd9i6jw43y2xh5zvlmj9ar2rvknh0bh7kv8c95aq0d";
   };
 
-  buildInputs = [ xz lzo xz zlib ]
+  buildInputs = [ lzma lzo xz zlib ]
     ++ lib.optional lz4Support lz4;
 
   patches = [ patch ];

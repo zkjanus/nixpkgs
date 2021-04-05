@@ -1,4 +1,4 @@
-{stdenv, lib, fetchFromGitHub, xz, xar}:
+{stdenv, lib, fetchFromGitHub, lzma, xar}:
 
 stdenv.mkDerivation rec {
   pname = "pbzx";
@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
     rev = "v${version}";
     sha256 = "0bwd7wmnhpz1n5p39mh6asfyccj4cm06hwigslcwbb3pdwmvxc90";
   };
-  buildInputs = [ xz xar ];
+  buildInputs = [ lzma xar ];
   buildPhase = ''
     cc pbzx.c -llzma -lxar -o pbzx
   '';

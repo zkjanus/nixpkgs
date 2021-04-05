@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, bison }:
+{ lib, stdenv, fetchurl, yacc }:
 
 stdenv.mkDerivation rec {
   name = "jam-2.6.1";
@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
     sha256 = "19xkvkpycxfsncxvin6yqrql3x3z9ypc1j8kzls5k659q4kv5rmc";
   };
 
-  nativeBuildInputs = [ bison ];
+  nativeBuildInputs = [ yacc ];
 
   preConfigure = ''
     unset AR

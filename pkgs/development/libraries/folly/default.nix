@@ -8,7 +8,7 @@
 , gflags
 , libiberty
 , lz4
-, xz
+, lzma
 , zlib
 , jemalloc
 , openssl
@@ -43,7 +43,7 @@ stdenv.mkDerivation (rec {
     libiberty
     openssl
     lz4
-    xz
+    lzma
     zlib
     jemalloc
     libunwind

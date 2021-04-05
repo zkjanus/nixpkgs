@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchgit, xz }:
+{ lib, stdenv, fetchgit, xz, lzma }:
 
 let name = "pxz";
     version = "4.999.9beta+git";
@@ -12,7 +12,7 @@ stdenv.mkDerivation {
     sha256 = "0na2kw8cf0qd8l1aywlv9m3xrxnqlcwxfdwp3f7x9vxwqx3k32kc";
   };
 
-  buildInputs = [ xz ];
+  buildInputs = [ lzma ];
 
   patches = [ ./_SC_ARG_MAX.patch ];
 

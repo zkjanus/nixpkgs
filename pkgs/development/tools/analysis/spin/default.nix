@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchurl, makeWrapper, bison, gcc
+{ stdenv, lib, fetchurl, makeWrapper, yacc, gcc
 , withISpin ? true, tk, swarm, graphviz }:
 
 let
@@ -20,7 +20,7 @@ in stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [ bison ];
+  buildInputs = [ yacc ];
 
   sourceRoot = "Spin/Src${version}";
 

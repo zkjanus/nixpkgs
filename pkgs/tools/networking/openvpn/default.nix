@@ -3,7 +3,7 @@
 , pkg-config
 , makeWrapper
 , runtimeShell
-, iproute2
+, iproute
 , lzo
 , openssl
 , pam
@@ -40,13 +40,13 @@ let
 
         buildInputs = [ lzo openssl ]
           ++ optional stdenv.isLinux pam
-          ++ optional withIpRoute iproute2
+          ++ optional withIpRoute iproute
           ++ optional useSystemd systemd
           ++ optional pkcs11Support pkcs11helper;
 
         configureFlags = optionals withIpRoute [
           "--enable-iproute2"
-          "IPROUTE=${iproute2}/sbin/ip"
+          "IPROUTE=${iproute}/sbin/ip"
         ]
         ++ optional useSystemd "--enable-systemd"
         ++ optional pkcs11Support "--enable-pkcs11"
@@ -60,7 +60,7 @@ let
         '' + optionalString useSystemd ''
           install -Dm555 ${update-resolved} $out/libexec/update-systemd-resolved
           wrapProgram $out/libexec/update-systemd-resolved \
-            --prefix PATH : ${makeBinPath [ runtimeShell iproute2 systemd util-linux ]}
+            --prefix PATH : ${makeBinPath [ runtimeShell iproute systemd util-linux ]}
         '';
 
         enableParallelBuilding = true;

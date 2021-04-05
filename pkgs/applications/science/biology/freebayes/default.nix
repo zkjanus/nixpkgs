@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, zlib, bzip2, xz }:
+{ lib, stdenv, fetchFromGitHub, zlib, bzip2, lzma }:
 
 stdenv.mkDerivation rec {
   pname = "freebayes";
@@ -13,7 +13,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  buildInputs = [ zlib bzip2 xz ];
+  buildInputs = [ zlib bzip2 lzma ];
 
   installPhase = ''
     install -vD bin/freebayes bin/bamleftalign scripts/* -t $out/bin

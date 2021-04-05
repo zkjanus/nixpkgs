@@ -1,5 +1,5 @@
 { lib, stdenv, fetchcvs, autoconf, automake, libtool, flex, bison, pkg-config
-, zlib, bzip2, xz, libgcrypt
+, zlib, bzip2, lzma, libgcrypt
 }:
 
 with lib;
@@ -24,7 +24,7 @@ stdenv.mkDerivation rec {
       buildInputs = map mkStatic (o.buildInputs or []);
       propagatedBuildInputs = map mkStatic (o.propagatedBuildInputs or []);
     });
-  in map mkStatic [ zlib bzip2 xz libgcrypt ];
+  in map mkStatic [ zlib bzip2 lzma libgcrypt ];
 
   configureFlags = [ "--disable-shared" ];
 

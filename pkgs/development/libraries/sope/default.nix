@@ -1,5 +1,5 @@
 { gnustep, lib, fetchFromGitHub , libxml2, openssl_1_1
-, openldap, mariadb, libmysqlclient, postgresql }:
+, openldap, mysql, libmysqlclient, postgresql }:
 with lib;
 
 gnustep.stdenv.mkDerivation rec {
@@ -17,7 +17,7 @@ gnustep.stdenv.mkDerivation rec {
   nativeBuildInputs = [ gnustep.make ];
   buildInputs = flatten ([ gnustep.base libxml2 openssl_1_1 ]
     ++ optional (openldap != null) openldap
-    ++ optionals (mariadb != null) [ libmysqlclient mariadb ]
+    ++ optionals (mysql != null) [ libmysqlclient mysql ]
     ++ optional (postgresql != null) postgresql);
 
   postPatch = ''
@@ -31,7 +31,7 @@ gnustep.stdenv.mkDerivation rec {
 
   configureFlags = [ "--prefix=" "--disable-debug" "--enable-xml" "--with-ssl=ssl" ]
     ++ optional (openldap != null) "--enable-openldap"
-    ++ optional (mariadb != null) "--enable-mysql"
+    ++ optional (mysql != null) "--enable-mysql"
     ++ optional (postgresql != null) "--enable-postgresql";
 
   # Yes, this is ugly.

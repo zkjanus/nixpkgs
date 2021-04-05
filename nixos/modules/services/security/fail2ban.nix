@@ -243,7 +243,7 @@ in
       restartTriggers = [ fail2banConf jailConf pathsConf ];
       reloadIfChanged = true;
 
-      path = [ cfg.package cfg.packageFirewall pkgs.iproute2 ];
+      path = [ cfg.package cfg.packageFirewall pkgs.iproute ];
 
       unitConfig.Documentation = "man:fail2ban(1)";
 

@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, autoreconfHook, bison, flex}:
+{ lib, stdenv, fetchurl, autoreconfHook, yacc, flex}:
 
 stdenv.mkDerivation rec {
   version = "2.4.1";
@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  nativeBuildInputs = [ autoreconfHook bison flex ];
+  nativeBuildInputs = [ autoreconfHook yacc flex ];
 
   configureFlags = [ "--sysconfdir=/etc" ];
 

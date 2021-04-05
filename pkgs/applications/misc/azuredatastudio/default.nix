@@ -12,7 +12,7 @@
 , at-spi2-atk
 , gnutar
 , atomEnv
-, libkrb5
+, kerberos
 }:
 
 # from justinwoo/azuredatastudio-nix
@@ -70,7 +70,7 @@ stdenv.mkDerivation rec {
         at-spi2-core
         at-spi2-atk
         stdenv.cc.cc.lib
-        libkrb5
+        kerberos
       ]
     )
     targetPath

@@ -1,5 +1,5 @@
 { lib, stdenv, fetchurl, makeWrapper
-, expat, fftwFloat, fontconfig, freetype, libjack2, jack2, libclthreads, libclxclient
+, expat, fftwFloat, fontconfig, freetype, libjack2, jack2Full, libclthreads, libclxclient
 , libsndfile, libxcb, xorg
 }:
 
@@ -30,7 +30,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     # Make sure Jack is avalable in $PATH for tetraproc
-    wrapProgram $out/bin/tetraproc --prefix PATH : "${jack2}/bin"
+    wrapProgram $out/bin/tetraproc --prefix PATH : "${jack2Full}/bin"
   '';
 
   meta = with lib; {

@@ -14,6 +14,7 @@
 , cramfsswap
 , sasquatch
 , squashfsTools
+, lzma
 , matplotlib
 , nose
 , pycrypto
@@ -31,7 +32,7 @@ buildPythonPackage rec {
     sha256 = "1bxgj569fzwv6jhcbl864nmlsi9x1k1r20aywjxc8b9b1zgqrlvc";
   };
 
-  propagatedBuildInputs = [ zlib xz ncompress gzip bzip2 gnutar p7zip cabextract squashfsTools xz pycrypto ]
+  propagatedBuildInputs = [ zlib xz ncompress gzip bzip2 gnutar p7zip cabextract squashfsTools lzma pycrypto ]
   ++ lib.optionals visualizationSupport [ matplotlib pyqtgraph ]
   ++ lib.optionals (!stdenv.isDarwin) [ cramfsprogs cramfsswap sasquatch ];
 
