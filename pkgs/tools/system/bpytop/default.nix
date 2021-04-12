@@ -15,7 +15,9 @@ stdenv.mkDerivation rec {
   propagatedBuildInputs = with python3Packages; [ python psutil ];
 
   dontBuild = true;
-
+  patches = [
+    ./transparent.patch
+  ];
   postPatch = ''
     sed -i -e "s#/usr/\[local/\]#$out/#g" \
            -e "s#/usr/{td}#$out/#g" \
@@ -23,10 +25,17 @@ stdenv.mkDerivation rec {
       ./bpytop.py
   '';
 
-  installPhase = ''
+  installPhase = let
+  transparent = builtins.path {
+    name = "transparent-theme";
+    path = ./transparent.theme;
+  };
+  in
+    ''
     mkdir -p $out/{bin,libexec,share/bpytop}/
     cp -r ./themes $out/share/bpytop/
     cp ./bpytop.py $out/libexec/
+    ln -s ${transparent} $out/share/bpytop/themes/transparent.theme
 
     makeWrapper ${python3Packages.python.interpreter} $out/bin/bpytop \
       --add-flags "$out/libexec/bpytop.py" \
