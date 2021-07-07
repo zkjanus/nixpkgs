@@ -1,0 +1,23 @@
+diff --git a/go.mod b/go.mod
+index 77d6fd6..eafc985 100644
+--- a/go.mod
++++ b/go.mod
+@@ -23,3 +23,5 @@ require (
+ 	golang.org/x/text v0.3.6 // indirect
+ 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
+ )
++
++replace github.com/emersion/go-message v0.14.1 => github.com/zkjanus/go-message v0.14.3-0.20210707175707-c2848ff91e88
+diff --git a/go.sum b/go.sum
+index 594c5f7..ba7b8a4 100644
+--- a/go.sum
++++ b/go.sum
+@@ -48,6 +48,8 @@ github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+
+ github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
+ github.com/stretchr/testify v1.4.0 h1:2E4SXV/wtOkTonXsotYi4li6zVWxYlZuYNCXe9XRJyk=
+ github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
++github.com/zkjanus/go-message v0.14.3-0.20210707175707-c2848ff91e88 h1:vh+cfpetlW91Q8nncqeIUsLM3QIL3DVhtrOoU25e2Ys=
++github.com/zkjanus/go-message v0.14.3-0.20210707175707-c2848ff91e88/go.mod h1:fKPpvD/WDmdf0D7SnnM5XloROGFUW2EN1/V9eQ0DM+c=
+ golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
+ golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2 h1:It14KIkyBFYkHkwZ7k45minvA9aorojkyjGk9KJ5B/w=
+ golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2/go.mod h1:T9bdIzuCu7OtxOm1hfPfRQxPLYneinmdGuTeoZ9dtd4=
