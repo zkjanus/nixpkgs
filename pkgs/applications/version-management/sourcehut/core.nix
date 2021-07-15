@@ -47,6 +47,7 @@ buildPythonPackage rec {
 
   patches = [
     ./disable-npm-install.patch
+    ./remove-starttls.patch
   ];
 
   nativeBuildInputs = [
